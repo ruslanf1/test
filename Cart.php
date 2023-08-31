@@ -10,7 +10,7 @@ class Cart implements iCartInterface
      */
     public function calcVat(): float|int
     {
-        return $this->calc(0.18);
+        return $this->calcPrice(0.18);
     }
 
     /**
@@ -18,7 +18,7 @@ class Cart implements iCartInterface
      */
     public function notify(): void
     {
-        $price = $this->calc();
+        $price = $this->calcPrice();
         $this->sendMail($price);
     }
 
@@ -28,7 +28,7 @@ class Cart implements iCartInterface
      */
     public function makeOrder(float|int $discount = 1.0): void
     {
-        $price = $this->calc() * $discount;
+        $price = $this->calcPrice() * $discount;
         $this->order = new Order($this->items, $price);
         $this->notify();
     }
@@ -49,7 +49,7 @@ class Cart implements iCartInterface
      * @param float|int $value
      * @return float|int
      */
-    public function calc(float|int $value = 1.18): float|int
+    public function calcPrice(float|int $value = 1.18): float|int
     {
         $price = 0;
         foreach ($this->items as $item) {
