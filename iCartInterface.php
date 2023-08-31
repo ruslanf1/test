@@ -16,5 +16,5 @@ interface iCartInterface
      * @param float|int $discount
      * @return void
      */
-    public function makeOrder(float|int $discount): void;
+    public function makeOrder(float|int $discount = 1.0): void;
 }
