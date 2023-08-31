@@ -1,4 +1,5 @@
 <?php
+include 'iCartInterface.php';
 
 class Cart implements iCartInterface
 {
